@@ -1,0 +1,9 @@
+[33ma25b9b7[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m)[m Add backend AI functionality with OpenAI and Ollama integration
+[33mfc67e8c[m Refactor button layout in chat input area for improved readability
+[33mb0cc5a2[m Merge branch 'master' of https://github.com/Edragneel08/fama-ai-chatbot
+[33mbd89c31[m Implement chat history retrieval and save functionality
+[33m66dc485[m Add initial project description to README
+[33m9be43d6[m[33m ([m[1;33mtag: [m[1;33mv0.1.1[m[33m)[m Add frontend implementation and setup FastAPI middleware
+[33m6695510[m Add changelog for v0.1.0
+[33m071ff10[m[33m ([m[1;33mtag: [m[1;33mv0.1.0[m[33m)[m Complete FAMA AI Chatbot Phase 1
+[33m4519f8e[m Initial FAMA AI chatbot setup
