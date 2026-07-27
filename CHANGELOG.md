@@ -11,3 +11,4 @@ Semua perubahan penting untuk project ini akan direkodkan di sini.
 - Tambah request validation menggunakan Pydantic
 - Implement basic chatbot response logic
 - Setup project Git repository
+- frontend sikit penambahan

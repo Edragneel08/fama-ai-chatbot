@@ -1,0 +1,79 @@
+async function sendMessage(){
+
+    let input = document.getElementById("question");
+
+    let question = input.value.trim();
+
+
+    if(question === ""){
+        return;
+    }
+
+
+    let chatBox = document.getElementById("chat-box");
+
+
+    chatBox.innerHTML += `
+    <div class="message user">
+        ${question}
+    </div>
+    `;
+
+
+    input.value="";
+
+
+    chatBox.innerHTML += `
+    <div class="message bot" id="loading">
+        FAMA AI sedang menaip...
+    </div>
+    `;
+
+
+    chatBox.scrollTop = chatBox.scrollHeight;
+
+
+    // delay supaya nampak AI sedang menaip
+    await new Promise(resolve => setTimeout(resolve, 1500));
+
+
+    let response = await fetch(
+        "http://127.0.0.1:8000/chat",
+        {
+            method:"POST",
+            headers:{
+                "Content-Type":"application/json"
+            },
+            body:JSON.stringify({
+                question:question
+            })
+        }
+    );
+
+
+    let data = await response.json();
+
+
+    document.getElementById("loading").remove();
+
+
+    chatBox.innerHTML += `
+    <div class="message bot">
+        ${data.answer}
+    </div>
+    `;
+
+
+    chatBox.scrollTop = chatBox.scrollHeight;
+
+}
+
+
+
+function handleEnter(event){
+
+    if(event.key === "Enter"){
+        sendMessage();
+    }
+
+}
