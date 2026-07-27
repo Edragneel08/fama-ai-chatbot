@@ -1,4 +1,19 @@
+# Python
 __pycache__/
 *.pyc
+
+# Virtual environment
 .venv/
+
+# Environment variables
 .env
+
+# Ollama models/cache
+*.bin
+*.gguf
+
+# VS Code
+.vscode/
+
+# Logs
+*.log
