@@ -1,3 +1,15 @@
+window.onload = function(){
+
+    let oldChat = localStorage.getItem("fama_chat");
+
+    if(oldChat){
+
+        document.getElementById("chat-box").innerHTML = oldChat;
+
+    }
+
+}
+
 async function sendMessage(){
 
     let input = document.getElementById("question");
@@ -19,6 +31,7 @@ async function sendMessage(){
     </div>
     `;
 
+    saveChat();
 
     input.value="";
 
@@ -63,11 +76,11 @@ async function sendMessage(){
     </div>
     `;
 
+    saveChat();
 
     chatBox.scrollTop = chatBox.scrollHeight;
 
 }
-
 
 
 function handleEnter(event){
@@ -75,5 +88,24 @@ function handleEnter(event){
     if(event.key === "Enter"){
         sendMessage();
     }
+
+}
+
+function saveChat(){
+
+    let chatBox = document.getElementById("chat-box");
+
+    localStorage.setItem(
+        "fama_chat",
+        chatBox.innerHTML
+    );
+
+}
+
+function clearChat(){
+
+    localStorage.removeItem("fama_chat");
+
+    document.getElementById("chat-box").innerHTML = "";
 
 }
