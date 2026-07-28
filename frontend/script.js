@@ -47,32 +47,56 @@ async function sendMessage(){
 
 
     // delay supaya nampak AI sedang menaip
-    await new Promise(resolve => setTimeout(resolve, 1500));
+    // await new Promise(resolve => setTimeout(resolve, 1500));
 
 
-    let response = await fetch(
-        "http://127.0.0.1:8000/chat",
-        {
-            method:"POST",
-            headers:{
-                "Content-Type":"application/json"
-            },
-            body:JSON.stringify({
-                question:question
-            })
-        }
-    );
+    let data;
+
+    try {
+
+        let response = await fetch(
+            "http://127.0.0.1:8000/chat",
+            {
+                method:"POST",
+                headers:{
+                    "Content-Type":"application/json"
+                },
+                body:JSON.stringify({
+                    question:question
+                })
+            }
+        );
 
 
-    let data = await response.json();
+        data = await response.json();
 
 
-    document.getElementById("loading").remove();
+    }
+    catch(error){
 
+        data = {
+            answer:"Maaf, sistem FAMA AI tidak dapat dihubungi."
+        };
+
+    }
+
+
+    let loading = document.getElementById("loading");
+
+    if(loading){
+        loading.remove();
+    }
+
+
+    // chatBox.innerHTML += `
+    // <div class="message bot">
+    //     ${data.answer}
+    // </div>
+    // `;
 
     chatBox.innerHTML += `
     <div class="message bot">
-        ${data.answer}
+        ${marked.parse(data.answer)}
     </div>
     `;
 
